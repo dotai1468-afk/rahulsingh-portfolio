@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Singh — E-Commerce Accounting Specialist</title>
+<meta name="description" content="Rahul Singh — Specialist Accountant for E-Commerce Businesses. Bookkeeping, GST, MIS Reports & Financial Reporting.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f9f6f1;
+  --surface: #ffffff;
+  --ink: #1a1a18;
+  --ink-muted: #6b6860;
+  --ink-faint: #b0ada8;
+  --primary: #1c5c38;
+  --primary-hover: #154829;
+  --primary-light: #eaf3ee;
+  --primary-mid: #b6d9c4;
+  --gold: #b5862a;
+  --gold-light: #fdf3e0;
+  --border: #e8e3db;
+  --shadow-sm: 0 2px 12px rgba(26,26,24,0.06);
+  --shadow-md: 0 6px 32px rgba(26,26,24,0.09);
+  --shadow-lg: 0 16px 56px rgba(26,26,24,0.12);
+  --radius: 14px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--primary-mid); border-radius: 2px; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 5%; height: 64px;
+  background: rgba(249,246,241,0.94);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; font-weight: 700; color: var(--ink);
+  text-decoration: none;
+}
+.nav-brand-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--primary);
+  animation: blink 2.5s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em;
+  color: var(--ink-muted); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--primary); }
+.nav-cta {
+  background: var(--primary); color: #fff !important;
+  padding: 0.45rem 1.1rem; border-radius: 50px;
+  font-weight: 600 !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--primary-hover) !important; color: #fff !important; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 80px 5% 60px;
+  position: relative; overflow: hidden;
+}
+.hero-bg-shape {
+  position: absolute; right: -8%; top: 10%;
+  width: 55vw; height: 80vh;
+  background: radial-gradient(ellipse at 70% 40%, rgba(28,92,56,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-bg-lines {
+  position: absolute; left: 0; top: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(28,92,56,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28,92,56,0.035) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 1160px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: center;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--primary-light); border: 1px solid var(--primary-mid);
+  border-radius: 100px; padding: 5px 14px;
+  font-size: 0.75rem; font-weight: 600; color: var(--primary);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 1.4rem;
+  opacity: 0; animation: slideUp 0.6s 0.1s ease forwards;
+}
+.hero-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); animation: blink 2s infinite; }
+
+h1.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  font-weight: 700; line-height: 1.06; letter-spacing: -0.01em;
+  opacity: 0; animation: slideUp 0.7s 0.2s ease forwards;
+}
+h1.hero-title em {
+  font-style: italic; color: var(--primary);
+}
+h1.hero-title .line-accent {
+  display: block; position: relative;
+}
+h1.hero-title .line-accent::after {
+  content: '';
+  position: absolute; bottom: 2px; left: 0;
+  height: 3px; width: 100%;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  border-radius: 2px;
+  transform: scaleX(0); transform-origin: left;
+  animation: lineGrow 0.8s 1s ease forwards;
+}
+@keyframes lineGrow { to { transform: scaleX(1); } }
+
+.hero-sub {
+  margin-top: 1.4rem; font-size: 1.05rem;
+  color: var(--ink-muted); line-height: 1.75; max-width: 460px;
+  opacity: 0; animation: slideUp 0.7s 0.35s ease forwards;
+}
+
+.hero-pills {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.8rem;
+  opacity: 0; animation: slideUp 0.7s 0.45s ease forwards;
+}
+.pill {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 6px 12px;
+  font-size: 0.79rem; font-weight: 500; color: var(--ink-muted);
+}
+.pill-icon { font-size: 0.95rem; }
+
+.hero-actions {
+  display: flex; gap: 1rem; margin-top: 2.2rem; flex-wrap: wrap;
+  opacity: 0; animation: slideUp 0.7s 0.55s ease forwards;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 0.82rem 1.8rem; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 600; text-decoration: none;
+  transition: all 0.2s; cursor: pointer;
+}
+.btn-primary {
+  background: var(--primary); color: #fff;
+  box-shadow: 0 4px 20px rgba(28,92,56,0.3);
+}
+.btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 28px rgba(28,92,56,0.38); }
+.btn-wa {
+  background: #25d366; color: #fff;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+}
+.btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.btn-outline {
+  border: 1.5px solid var(--border); color: var(--ink-muted);
+  background: transparent;
+}
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+
+/* HERO RIGHT — STAT CARD */
+.hero-right { opacity: 0; animation: fadeIn 1s 0.6s ease forwards; }
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px; padding: 2.2rem;
+  box-shadow: var(--shadow-lg);
+  position: relative; overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute; top: -40px; right: -40px;
+  width: 140px; height: 140px;
+  background: radial-gradient(circle, rgba(28,92,56,0.07), transparent 70%);
+  border-radius: 50%;
+}
+.stat-card-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 1.6rem;
+}
+.avatar {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary), #3a9e6a);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 700; color: #fff;
+}
+.avatar-info-name { font-weight: 700; font-size: 1rem; }
+.avatar-info-role { font-size: 0.77rem; color: var(--ink-muted); margin-top: 2px; }
+
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.4rem; }
+.stat-box {
+  background: var(--bg); border-radius: 10px; padding: 1rem;
+  border: 1px solid var(--border);
+}
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 700; color: var(--primary); line-height: 1;
+}
+.stat-label { font-size: 0.72rem; color: var(--ink-muted); font-weight: 500; margin-top: 4px; }
+
+.contact-row {
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.contact-line {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg); border-radius: 8px; padding: 8px 12px;
+  font-size: 0.82rem; color: var(--ink-muted); font-weight: 500;
+}
+.contact-line a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.contact-line .ci { font-size: 1rem; }
+.wa-badge {
+  margin-left: auto; background: #e8faf0;
+  color: #1a9c4e; border-radius: 4px; padding: 1px 7px;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em;
+}
+
+@keyframes slideUp { from{opacity:0;transform:translateY(22px);} to{opacity:1;transform:translateY(0);} }
+@keyframes fadeIn  { from{opacity:0;} to{opacity:1;} }
+
+/* ─── SECTION BASE ─── */
+.section { padding: 90px 5%; }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.eyebrow {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--primary);
+  margin-bottom: 0.7rem;
+}
+.eyebrow::before { content:''; width:18px; height:2px; background:var(--primary); border-radius:2px; }
+.section-h {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  font-weight: 700; line-height: 1.18; max-width: 580px;
+}
+.section-p {
+  margin-top: 0.7rem; font-size: 0.97rem;
+  color: var(--ink-muted); max-width: 520px; line-height: 1.75;
+}
+
+/* ─── SERVICES ─── */
+#services { background: var(--ink); }
+#services .eyebrow { color: #6fcf97; }
+#services .eyebrow::before { background: #6fcf97; }
+#services .section-h { color: #f9f6f1; }
+#services .section-p { color: rgba(249,246,241,0.5); }
+
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem; margin-top: 3rem;
+}
+.svc {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius); padding: 1.8rem;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  position: relative; overflow: hidden;
+}
+.svc::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--primary), #3a9e6a);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.svc:hover { background: rgba(255,255,255,0.07); border-color: rgba(111,207,151,0.25); transform: translateY(-4px); }
+.svc:hover::before { transform: scaleX(1); }
+.svc-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: rgba(28,92,56,0.35); border: 1px solid rgba(111,207,151,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 1.2rem;
+}
+.svc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-weight: 700; color: #f9f6f1;
+  margin-bottom: 0.5rem;
+}
+.svc-desc { font-size: 0.84rem; color: rgba(249,246,241,0.5); line-height: 1.7; }
+.svc-bullets { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.35rem; }
+.svc-bullets li {
+  font-size: 0.8rem; color: rgba(249,246,241,0.45);
+  display: flex; align-items: flex-start; gap: 7px;
+}
+.svc-bullets li::before { content:'→'; color: #6fcf97; font-size: 0.75rem; margin-top: 2px; flex-shrink:0; }
+
+/* ─── WHO I SERVE ─── */
+#clients { background: var(--bg); }
+.clients-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 1rem; margin-top: 2.8rem;
+}
+.client-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.4rem 1rem;
+  text-align: center;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.client-card:hover { border-color: var(--primary-mid); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.client-emo { font-size: 2rem; margin-bottom: 0.7rem; display: block; }
+.client-name { font-weight: 700; font-size: 0.88rem; margin-bottom: 0.3rem; }
+.client-desc { font-size: 0.76rem; color: var(--ink-muted); line-height: 1.5; }
+
+/* ─── WHY RAHUL ─── */
+#why { background: var(--surface); }
+.why-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: center; margin-top: 2.8rem;
+}
+.why-points { display: flex; flex-direction: column; gap: 1.5rem; }
+.why-point {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: 1.2rem; border-radius: 12px;
+  border: 1px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+.why-point:hover { background: var(--primary-light); border-color: var(--primary-mid); }
+.why-ico {
+  width: 42px; height: 42px; border-radius: 11px;
+  background: var(--primary-light); border: 1px solid var(--primary-mid);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.why-t { font-weight: 700; font-size: 0.96rem; margin-bottom: 0.25rem; }
+.why-d { font-size: 0.84rem; color: var(--ink-muted); line-height: 1.65; }
+
+.skills-panel {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 18px; padding: 2rem;
+}
+.skills-panel-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem;
+}
+.skill-row { margin-bottom: 1.2rem; }
+.skill-meta { display: flex; justify-content: space-between; margin-bottom: 5px; }
+.skill-name { font-size: 0.82rem; font-weight: 600; }
+.skill-pct { font-size: 0.82rem; font-weight: 700; color: var(--primary); }
+.skill-bar { height: 7px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), #4db87a);
+  border-radius: 4px;
+}
+
+/* ─── TOOLS ─── */
+#tools { background: var(--bg); }
+.tools-flex { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2.5rem; }
+.tool-tag {
+  display: flex; align-items: center; gap: 7px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 50px; padding: 7px 16px;
+  font-size: 0.83rem; font-weight: 500;
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.15s;
+  cursor: default;
+}
+.tool-tag:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+
+/* ─── PROCESS ─── */
+#process { background: var(--surface); }
+.process-steps {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1.2rem; margin-top: 2.8rem; position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute; top: 28px; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-mid), transparent);
+  z-index: 0;
+}
+.step {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.6rem;
+  position: relative; z-index: 1;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.step:hover { border-color: var(--primary-mid); transform: translateY(-3px); }
+.step-n {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 700; margin-bottom: 1rem;
+}
+.step-title { font-weight: 700; font-size: 0.92rem; margin-bottom: 0.35rem; }
+.step-desc { font-size: 0.8rem; color: var(--ink-muted); line-height: 1.6; }
+
+/* ─── TESTIMONIAL ─── */
+#testimonial { background: var(--bg); }
+.t-wrap { max-width: 740px; margin: 2.8rem auto 0; }
+.t-box {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 2.8rem;
+  box-shadow: var(--shadow-md); position: relative;
+}
+.t-box::before {
+  content: '\201C';
+  position: absolute; top: -10px; left: 2.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem; line-height: 1; color: var(--primary);
+  opacity: 0.18;
+}
+.t-stars { color: #f59e0b; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 1rem; }
+.t-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-style: italic; line-height: 1.75;
+  color: var(--ink); margin-bottom: 1.8rem;
+}
+.t-person { display: flex; align-items: center; gap: 1rem; }
+.t-av {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #4db87a);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 700; color: #fff;
+}
+.t-name { font-weight: 700; font-size: 0.9rem; }
+.t-role { font-size: 0.77rem; color: var(--ink-muted); margin-top: 2px; }
+
+/* ─── CTA / CONTACT ─── */
+#contact {
+  background: linear-gradient(135deg, #0f3820 0%, #1c5c38 60%, #1a5235 100%);
+  padding: 100px 5%;
+  position: relative; overflow: hidden;
+}
+#contact::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+.contact-inner {
+  max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 1;
+}
+.contact-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #a7f3c0; margin-bottom: 1rem;
+}
+.contact-h {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 700;
+  color: #fff; line-height: 1.15; margin-bottom: 1rem;
+}
+.contact-p {
+  font-size: 1rem; color: rgba(255,255,255,0.6);
+  line-height: 1.75; margin-bottom: 2.5rem; max-width: 560px; margin-left: auto; margin-right: auto;
+}
+.contact-methods {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2.5rem;
+}
+.cmethod {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 12px; padding: 0.9rem 1.4rem;
+  color: #fff; text-decoration: none; font-size: 0.88rem; font-weight: 500;
+  transition: background 0.2s, transform 0.15s;
+}
+.cmethod:hover { background: rgba(255,255,255,0.16); transform: translateY(-2px); }
+.cmethod .cmi { font-size: 1.2rem; }
+.cmethod strong { display: block; font-weight: 700; font-size: 0.9rem; }
+.cmethod span { font-size: 0.75rem; opacity: 0.65; }
+.cmethod.wa-method {
+  background: rgba(37,211,102,0.15);
+  border-color: rgba(37,211,102,0.3);
+}
+.cmethod.wa-method:hover { background: rgba(37,211,102,0.25); }
+.wa-tag {
+  background: #25d366; color: #fff;
+  border-radius: 4px; padding: 2px 8px;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em;
+  margin-left: 4px;
+}
+.contact-note {
+  font-size: 0.82rem; color: rgba(255,255,255,0.38);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: #09200f; color: rgba(255,255,255,0.28);
+  text-align: center; padding: 1.5rem;
+  font-size: 0.76rem; letter-spacing: 0.03em;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .clients-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 820px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .why-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .process-steps::before { display: none; }
+  nav .nav-links { display: none; }
+  .services-grid { grid-template-columns: 1fr; }
+  .clients-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .hero-actions { flex-direction: column; }
+  .process-steps { grid-template-columns: 1fr; }
+}
+
+/* ─── PRINT / PDF ─── */
+@media print {
+  @page { size: A4; margin: 12mm 10mm; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; animation: none !important; transition: none !important; }
+  nav { display: none !important; }
+  .hero { min-height: auto !important; padding: 20px 14px 16px !important; }
+  .hero-right { display: none !important; }
+  .hero-inner { grid-template-columns: 1fr !important; }
+  section, .section { padding: 20px 14px !important; page-break-inside: avoid; }
+  .svc, .step, .client-card, .why-point, .t-box, .skills-panel { page-break-inside: avoid !important; break-inside: avoid !important; }
+  .services-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+  .clients-grid { grid-template-columns: repeat(3,1fr) !important; gap: 8px !important; }
+  .process-steps { grid-template-columns: 1fr 1fr !important; }
+  .why-layout { grid-template-columns: 1fr !important; }
+  #contact { page-break-before: always !important; }
+  .hero-title { font-size: 22px !important; }
+  .section-h { font-size: 16px !important; }
+  body { font-size: 10px !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-dot"></div>
+    Rahul Singh
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#why">Why Me</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-bg-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag">
+        <div class="hero-tag-dot"></div>
+        Open to New Clients · India
+      </div>
+      <h1 class="hero-title">
+        Clean Books.<br>
+        <em>Confident</em> Numbers.<br>
+        <span class="line-accent">Stress-Free Finance.</span>
+      </h1>
+      <p class="hero-sub">
+        I'm Rahul Singh — an accounting specialist with 4+ years of focused experience helping e-commerce businesses keep their finances accurate, organised, and growth-ready.
+      </p>
+      <div class="hero-pills">
+        <div class="pill"><span class="pill-icon">📒</span> Bookkeeping</div>
+        <div class="pill"><span class="pill-icon">🛒</span> E-Commerce</div>
+        <div class="pill"><span class="pill-icon">🧾</span> GST & Tax</div>
+        <div class="pill"><span class="pill-icon">📊</span> MIS Reports</div>
+        <div class="pill"><span class="pill-icon">📈</span> Financial Reporting</div>
+      </div>
+      <div class="hero-actions">
+        <a href="mailto:rahulsinghas7838@gmail.com" class="btn btn-primary">📧 Email Me</a>
+        <a href="https://wa.me/919971537838" class="btn btn-wa" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Me
+        </a>
+        <a href="#services" class="btn btn-outline">Explore Services ↓</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="stat-card">
+        <div class="stat-card-header">
+          <div class="avatar">RS</div>
+          <div>
+            <div class="avatar-info-name">Rahul Singh</div>
+            <div class="avatar-info-role">E-Commerce Accounting Specialist</div>
+          </div>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-box">
+            <div class="stat-num">4+</div>
+            <div class="stat-label">Years of Experience</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">On-Time Delivery</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">5★</div>
+            <div class="stat-label">Client Satisfaction</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">E-Com</div>
+            <div class="stat-label">Niche Specialist</div>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-line">
+            <span class="ci">📧</span>
+            <a href="mailto:rahulsinghas7838@gmail.com">rahulsinghas7838@gmail.com</a>
+          </div>
+          <div class="contact-line">
+            <span class="ci">📞</span>
+            <a href="tel:+919971537838">+91 99715 37838</a>
+          </div>
+          <div class="contact-line">
+            <span class="ci">💬</span>
+            <a href="https://wa.me/919971537838">WhatsApp Available</a>
+            <span class="wa-badge">QUICK REPLY</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="section-inner">
+    <div class="eyebrow">What I Offer</div>
+    <div class="section-h">Services Built for Online Businesses</div>
+    <p class="section-p">Every service is designed around the real financial challenges that e-commerce businesses face — not generic accounting packages.</p>
+
+    <div class="services-grid">
+      <div class="svc">
+        <div class="svc-icon">📒</div>
+        <div class="svc-name">Bookkeeping & Reconciliation</div>
+        <p class="svc-desc">Accurate, fully reconciled books every month — banks, cards, and payment gateways all matched with zero discrepancies.</p>
+        <ul class="svc-bullets">
+          <li>Monthly bank & card reconciliation</li>
+          <li>Payment gateway matching (Razorpay, Stripe, PayPal)</li>
+          <li>Catch-up bookkeeping for backlogs</li>
+          <li>Journal entries & ledger maintenance</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon">🛒</div>
+        <div class="svc-name">E-Commerce Accounting</div>
+        <p class="svc-desc">Specialist accounting for online sellers — built around how marketplaces and D2C stores actually work financially.</p>
+        <ul class="svc-bullets">
+          <li>Amazon, Shopify & Flipkart accounting</li>
+          <li>COGS & inventory cost tracking</li>
+          <li>Returns, refunds & platform fee reconciliation</li>
+          <li>Multi-channel revenue consolidation</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon">🧾</div>
+        <div class="svc-name">Tax Filing & Compliance</div>
+        <p class="svc-desc">No missed deadlines, no penalties. GST, ITR, and TDS handled completely — so you can focus on selling, not stressing.</p>
+        <ul class="svc-bullets">
+          <li>GST return filing (GSTR-1, 3B, Annual)</li>
+          <li>Income tax return (ITR) filing</li>
+          <li>TDS calculation & filing</li>
+          <li>Advance tax planning</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon">📊</div>
+        <div class="svc-name">MIS Reports</div>
+        <p class="svc-desc">Clear, decision-ready monthly management reports. Know exactly where your business stands — without needing an accounting degree to read them.</p>
+        <ul class="svc-bullets">
+          <li>Monthly revenue & expense summary</li>
+          <li>Product & category-level profitability</li>
+          <li>Budget vs actuals tracking</li>
+          <li>Custom KPI dashboards</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon">📈</div>
+        <div class="svc-name">Financial Reporting & Analysis</div>
+        <p class="svc-desc">Audit-ready financial statements and analysis that give you a complete, accurate picture of your business health.</p>
+        <ul class="svc-bullets">
+          <li>Profit & loss statements</li>
+          <li>Balance sheet preparation</li>
+          <li>Cash flow statements & analysis</li>
+          <li>Monthly financial review call</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon">🔧</div>
+        <div class="svc-name">Catch-Up & Clean-Up</div>
+        <p class="svc-desc">Books in a mess? Behind on filings? I'll get everything sorted, reconciled, and fully up to date — no judgement, just results.</p>
+        <ul class="svc-bullets">
+          <li>Historical data clean-up</li>
+          <li>Backlog filing & reconciliation</li>
+          <li>Migration to new accounting software</li>
+          <li>One-time financial health check</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO I SERVE -->
+<section id="clients" class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Who I Work With</div>
+    <div class="section-h">Made for E-Commerce Businesses Like Yours</div>
+    <p class="section-p">Whether you're a solo seller or a growing brand, if you sell online, I understand your financial challenges better than a generalist accountant ever could.</p>
+
+    <div class="clients-grid">
+      <div class="client-card">
+        <span class="client-emo">🏪</span>
+        <div class="client-name">Amazon Sellers</div>
+        <p class="client-desc">FBA, FBM, or both — seller central payouts, fees & returns handled properly.</p>
+      </div>
+      <div class="client-card">
+        <span class="client-emo">🛍️</span>
+        <div class="client-name">Shopify Stores</div>
+        <p class="client-desc">D2C brands on Shopify with multi-gateway payments and inventory tracking.</p>
+      </div>
+      <div class="client-card">
+        <span class="client-emo">🏬</span>
+        <div class="client-name">Flipkart Sellers</div>
+        <p class="client-desc">Marketplace accounting with proper payout and return reconciliation.</p>
+      </div>
+      <div class="client-card">
+        <span class="client-emo">🌐</span>
+        <div class="client-name">Multi-Platform Sellers</div>
+        <p class="client-desc">Selling on 2+ platforms? I consolidate everything into one clean set of books.</p>
+      </div>
+      <div class="client-card">
+        <span class="client-emo">🚀</span>
+        <div class="client-name">Scaling D2C Brands</div>
+        <p class="client-desc">Growing brands that need audit-ready finances and investor-ready reports.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY RAHUL -->
+<section id="why" class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Why Work With Me</div>
+    <div class="section-h">A Specialist, Not a Generalist</div>
+    <p class="section-p">I've spent 4+ years focused exclusively on e-commerce accounting. That depth of focus means I catch what others miss — and deliver what others can't.</p>
+
+    <div class="why-layout">
+      <div class="why-points">
+        <div class="why-point">
+          <div class="why-ico">🎯</div>
+          <div>
+            <div class="why-t">100% E-Commerce Focused</div>
+            <p class="why-d">I don't do everything for everyone. E-commerce accounting is my speciality — which means I understand platform fees, return reserves, inventory COGS, and seller payouts at a level most accountants simply don't.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-ico">⏰</div>
+          <div>
+            <div class="why-t">Deadlines Are Non-Negotiable</div>
+            <p class="why-d">Books closed by the 5th of every month. Returns filed before due dates. You'll never get a last-minute call from me saying something isn't ready.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-ico">💬</div>
+          <div>
+            <div class="why-t">Always Reachable — Including WhatsApp</div>
+            <p class="why-d">Quick question mid-month? I'm available on WhatsApp for fast, direct communication. No ticketing system, no waiting days for a reply — just real human support.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-ico">🔍</div>
+          <div>
+            <div class="why-t">No Jargon, Just Clarity</div>
+            <p class="why-d">I explain your financials in plain language. You'll understand exactly what your numbers mean and what to do about them — without needing an accounting background.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-panel">
+        <div class="skills-panel-title">Core Expertise</div>
+        <div class="skill-row">
+          <div class="skill-meta"><span class="skill-name">Bank & Gateway Reconciliation</span><span class="skill-pct">98%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:98%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-meta"><span class="skill-name">E-Commerce Bookkeeping</span><span class="skill-pct">96%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:96%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-meta"><span class="skill-name">GST & Tax Compliance</span><span class="skill-pct">93%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:93%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-meta"><span class="skill-name">MIS Report Preparation</span><span class="skill-pct">91%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:91%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-meta"><span class="skill-name">Financial Reporting & Analysis</span><span class="skill-pct">89%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:89%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-meta"><span class="skill-name">Tally, Zoho Books, QuickBooks</span><span class="skill-pct">92%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Tools & Platforms</div>
+    <div class="section-h">I Work With Your Existing Stack</div>
+    <p class="section-p">No forced software changes. I adapt to the tools you already use and hit the ground running from day one.</p>
+
+    <div class="tools-flex">
+      <div class="tool-tag">📗 Tally Prime</div>
+      <div class="tool-tag">📘 Zoho Books</div>
+      <div class="tool-tag">📙 QuickBooks</div>
+      <div class="tool-tag">📊 Microsoft Excel</div>
+      <div class="tool-tag">☁️ Google Sheets</div>
+      <div class="tool-tag">🛍️ Amazon Seller Central</div>
+      <div class="tool-tag">🛒 Shopify</div>
+      <div class="tool-tag">🏪 Flipkart Seller Hub</div>
+      <div class="tool-tag">💳 Razorpay</div>
+      <div class="tool-tag">💳 Stripe</div>
+      <div class="tool-tag">💳 PayPal</div>
+      <div class="tool-tag">🧾 GST Portal</div>
+      <div class="tool-tag">🏦 Income Tax Portal</div>
+      <div class="tool-tag">📂 Google Drive</div>
+      <div class="tool-tag">📁 Dropbox</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="section">
+  <div class="section-inner">
+    <div class="eyebrow">How We Work Together</div>
+    <div class="section-h">Simple to Start, Smooth to Run</div>
+    <p class="section-p">From your first message to clean, organised finances — the process is straightforward and designed to put you at ease.</p>
+
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-title">Free Discovery Call</div>
+        <p class="step-desc">A relaxed 30-minute call to understand your business, your current situation, and what you need. No sales pressure — just an honest conversation.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-title">Clear Proposal</div>
+        <p class="step-desc">You receive a transparent proposal — services, deliverables, timelines, and pricing all clearly listed. No surprises, no hidden fees.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-title">Smooth Onboarding</div>
+        <p class="step-desc">You share access to your accounts and data. I set up everything and sort any backlogs — you don't have to do the heavy lifting.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">4</div>
+        <div class="step-title">Ongoing Partnership</div>
+        <p class="step-desc">Monthly books, reports, and filings delivered on time, every month. And I'm always on WhatsApp when you need a quick answer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section id="testimonial" class="section">
+  <div class="section-inner">
+    <div class="eyebrow" style="justify-content:center;">Client Feedback</div>
+    <div class="section-h" style="max-width:100%;text-align:center;">What My Client Says</div>
+    <div class="t-wrap">
+      <div class="t-box">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">
+          Before working with Rahul, I had no real clarity on my numbers — I was just selling and hoping the business was profitable. He cleaned up months of messy books, set up proper MIS reports, and now I get a clean monthly summary that actually helps me make decisions. What I appreciate most is how reachable he is — I can WhatsApp him a quick question and get a clear answer the same day. He genuinely cares about your business, not just ticking boxes. Highly recommend him to any e-commerce seller.
+        </p>
+        <div class="t-person">
+          <div class="t-av">A</div>
+          <div>
+            <div class="t-name">Amit Verma</div>
+            <div class="t-role">Shopify Store Owner · Fashion & Apparel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-eyebrow">⚡ Currently Accepting New Clients</div>
+    <h2 class="contact-h">Let's Get Your Finances<br><em style="font-style:italic;">In Perfect Order</em></h2>
+    <p class="contact-p">
+      Reach out via email, phone, or WhatsApp — whichever is easiest for you. I typically respond within a few hours, and we can start with a completely free, no-obligation discovery call.
+    </p>
+
+    <div class="contact-methods">
+      <a href="mailto:rahulsinghas7838@gmail.com" class="cmethod">
+        <span class="cmi">📧</span>
+        <div>
+          <strong>Email Me</strong>
+          <span>rahulsinghas7838@gmail.com</span>
+        </div>
+      </a>
+      <a href="https://wa.me/919971537838" class="cmethod wa-method" target="_blank">
+        <span class="cmi">💬</span>
+        <div>
+          <strong>WhatsApp <span class="wa-tag">FASTEST</span></strong>
+          <span>+91 99715 37838 · Quick replies</span>
+        </div>
+      </a>
+      <a href="tel:+919971537838" class="cmethod">
+        <span class="cmi">📞</span>
+        <div>
+          <strong>Call Me</strong>
+          <span>+91 99715 37838</span>
+        </div>
+      </a>
+    </div>
+
+    <p class="contact-note">📍 Based in India · Available for clients across India & globally · Free 30-min discovery call</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 · Rahul Singh · Accounting & Bookkeeping Specialist for E-Commerce Businesses · rahulsinghas7838@gmail.com · +91 99715 37838
+</footer>
+
+</body>
+</html>
